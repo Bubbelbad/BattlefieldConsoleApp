@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _2023._10._13_Övningar_Lektion_3___Klasser
+namespace _2023._10._13_Sänka_Skepp
 {
     internal class GameField
     {
@@ -57,16 +57,32 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
 
 
 
-        public bool Fire(int row, int col)
+        public void Fire(int row, int col) //För att välja vilken ruta vi vill bomba. 
         {
+            Console.WriteLine("\nVilken ruta vill du bomba? \n");
+            Console.Write("Välj in rad (lodräd): ");
+            int answer = int.Parse(Console.ReadLine());
+            Console.Write("Välj en kolumn (vågrät): ");
+            int answer2 = int.Parse(Console.ReadLine());
+            bool status = false;
+
             for (int i= 0; row < gameField.Length; row++) 
             {
                 for (int j = 0; col < gameField[row].Length; col++) 
                 {
-                    Console.Write(gameField[row][col] + " "); 
+                    if (answer == row && answer2 == col && gameField[row][col] == "[~]")
+                    {
+                        gameField[row][col] = "  "; //Här uppdaterar vi om det blev en miss. 
+                        Console.WriteLine("Du missade, inget skepp här.");
+                    }
+                    else if (answer == row && answer2 == col && gameField[row][col] == "[X]")
+                    {
+                        Console.WriteLine("Denna rutan har du redan skjutit på.");
+                    }
                 }
                 Console.WriteLine();
             }
+
         }
 
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _2023._10._13_Övningar_Lektion_3___Klasser
+namespace _2023._10._13_Sänka_Skepp
 {
     internal class Ship : IShip
     {

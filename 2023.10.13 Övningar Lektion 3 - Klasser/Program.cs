@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using System;
 
-namespace _2023._10._13_Övningar_Lektion_3___Klasser
+namespace _2023._10._13_Sänka_Skepp
 {
     internal class Program
     {

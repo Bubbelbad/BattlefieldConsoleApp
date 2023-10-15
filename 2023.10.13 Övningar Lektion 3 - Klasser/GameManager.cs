@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _2023._10._13_Övningar_Lektion_3___Klasser
+namespace _2023._10._13_Sänka_Skepp
 {
     internal class GameManager
     {
@@ -48,15 +48,6 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
 
        
 
-        public void Fire()
-        {
-            Console.WriteLine("\nVilken ruta vill du bomba? \n");
-            Console.Write("Välj in rad (lodräd): ");
-            int answer = int.Parse(Console.ReadLine());
-            Console.Write("Välj en kolumn (vågrät): ");
-            int answer2 = int.Parse(Console.ReadLine());
-
-        }
 
 
         public void NewGame()
