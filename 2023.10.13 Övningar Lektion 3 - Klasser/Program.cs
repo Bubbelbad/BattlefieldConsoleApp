@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using System;
+using _2023._10._13_Övningar_Lektion_3___Klasser;
 
 namespace _2023._10._13_Sänka_Skepp
 {
@@ -8,9 +9,18 @@ namespace _2023._10._13_Sänka_Skepp
         static void Main(string[] args)
         {
 
-            GameManager gameManager = new GameManager();
-
-            gameManager.Menu();
+            //  GameManager gameManager = new GameManager();
+            //
+            //  gameManager.Menu();
+            int[,] gameField = new int[11, 11];
+            for (int i = 0; i < gameField.GetLength(1); i++)
+            {
+                for (int j = 0; j < gameField.GetLength(0); j++)
+                {
+                    Console.Write($"{gameField[i, j]}".PadRight(3));
+                }
+                Console.WriteLine();
+            }
 
 
 
