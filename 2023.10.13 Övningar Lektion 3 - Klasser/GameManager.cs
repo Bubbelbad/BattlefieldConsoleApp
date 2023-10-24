@@ -10,6 +10,8 @@ namespace _2023._10._13_Sänka_Skepp
     internal class GameManager
     {
 
+
+        List<string> highScore = new List<string> { "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", };
         public GameManager()
         {
 
@@ -50,6 +52,7 @@ namespace _2023._10._13_Sänka_Skepp
             Console.Clear();
             gameF.SetGameField();
             gameF.ViewLayer0();
+            gameF.ViewLayer1();
         }
 
         private void GenerateCPUBoats()
@@ -59,16 +62,34 @@ namespace _2023._10._13_Sänka_Skepp
 
         public void LostGame()
         {
+            //När spelet är förlorat blir texten röd.
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("You lost the game mate. ");
+
         }
         private void SeeHightScore()
         {
-            throw new NotImplementedException();
-        }
-        public void ExitGame()
-        {
+            Console.WriteLine("Top ten players: \n");
 
+            Console.WriteLine($"1.{highScore[0]}");
+            Console.WriteLine($"2.{highScore[1]}");
+            Console.WriteLine($"3.{highScore[2]}");
+            Console.WriteLine($"4.{highScore[3]}");
+            Console.WriteLine($"5.{highScore[4]}");
+            Console.WriteLine($"6.{highScore[5]}");
+            Console.WriteLine($"7.{highScore[6]}");
+            Console.WriteLine($"8.{highScore[7]}");
+            Console.WriteLine($"9.{highScore[8]}");
+            Console.WriteLine($"10.{highScore[9]}");
+            //Här kommer jag printa ut en lista med de top 10 bästa highscores.
+      
         }
+
+        public void AddTohighScore()
+        {
+            //Idé om att använda nått från Collections! Typ en lista på 10 bästa spelare. 
+            //Kanske en sortedlist, dictionaory eller tuples som sparas i en lista med 10 platser.
+        }
+
     }
 }

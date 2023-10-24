@@ -67,7 +67,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             {
                 for (int row = 1; row < 11; row++)
                 {
-                    gameField[col, row, 1] = $"{0}";
+                    gameField[col, row, 1] = "0";
                 }
             }
             
@@ -107,7 +107,8 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
 
 
             //Man kan också använda sig av båtarnas interna koordinater. 
-            //Först klara man 
+            //Först loopar man igenom ifall någon av båtarna har koordinaten man skjutit. 
+            //Sedan loopar man igenom vad utgången i kartan blir. 
 
             //Jag skulle kunna göra en switch case,
             //där i eller två speglar oika symboler för att visa spelplanen. 

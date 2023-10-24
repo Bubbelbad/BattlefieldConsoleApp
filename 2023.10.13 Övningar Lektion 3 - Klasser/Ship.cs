@@ -10,6 +10,7 @@ namespace _2023._10._13_Sänka_Skepp
     {
         public string Name { get; set; }
 
+        public string Id { get; set; }
         public int YCoordinate { get; }
         public int XCoordinate { get; }
         public int Size { get; }
