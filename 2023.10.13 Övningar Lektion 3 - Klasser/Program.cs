@@ -9,8 +9,8 @@ namespace _2023._10._13_Sänka_Skepp
         static void Main(string[] args)
         {
 
-            GameManager gameManager = new GameManager();
-            gameManager.Menu();
+            Menu menu = new Menu();
+            menu.TheMenu();
 
 
             /*

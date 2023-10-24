@@ -74,32 +74,11 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             return gameField;
         }
 
-        //To see the players view on layer 0:
-        public void ViewLayer0()
+        public void AddShips()
         {
 
-            for (int i = 0; i < 12; i++)
-            {
-                for (int j = 0; j < 12; j++)
-                {
-                    Console.Write($"{gameField[i, j, 0]}".PadRight(1));
-                }
-                Console.WriteLine();
-            }
         }
 
-        //To view the gameLayer where the calculations end up. 
-        public void ViewLayer1()
-        {
-            for (int i = 0; i < 11; i++)
-            {
-                for (int j = 0; j < 11; j++)
-                {
-                    Console.Write($"{gameField[i, j, 1]}".PadRight(3));
-                }
-                Console.WriteLine();
-            }
-        }
 
 
 

@@ -9,89 +9,108 @@ namespace _2023._10._13_Sänka_Skepp
 {
     internal class GameManager
     {
+        GameField gameF = new GameField();
 
 
+        int moveCount = 0;
+        string[,,] game = new string[12, 12, 2];
+
+        string[] array = new string[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
         List<string> highScore = new List<string> { "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", };
+
+
         public GameManager()
         {
 
         }
 
-
-        GameField gameF = new GameField();
-
-        public void Menu()
+        
+        public void GameManagerMenu()
         {
+            Console.Clear();
+            game = gameF.SetGameField();
             bool menuStatus = true;
             while (menuStatus)
             {
+                ViewLayer0();
+                Aim(game);
                 Console.Clear();
-                Console.WriteLine("Välkommen till sänka skepp!\n\n" +
-                              " - Spela nytt spel       [1]\n" +
-                              " - Se HighScore          [2]\n" +
-                              " - Avsluta               [3]\n");
-                string answer = Console.ReadLine();
-                switch (answer)
-                {
-                    case "1":
-                        NewGame(gameF.SetGameField());
-                        Aim();
-                        break;
-                    case "2":
-                        SeeHightScore();
-                        break;
-                    case "3":
-                        System.Environment.Exit(0);
-                        break;
-                    default:
-                        Console.WriteLine("Vänligen skriv en siffra mellan 1 - 3");
-                        break;
-                }
             }
         }
 
 
-        public void NewGame(string[,,])
-        {
-            Console.Clear();
-            gameF.SetGameField();
-            gameF.ViewLayer0();
-            Console.ReadLine();
-            Aim();
-            gameF.ViewLayer0();
-        }
 
-
-        public void Aim()
+        public void Aim(string[,,] game)
         {
             Console.WriteLine("What column would you like to aim at?");
             int input1 = int.Parse(Console.ReadLine());
             Console.WriteLine("What row would you like aim at?");
-            int input2 = Console.Read();
-            Fire(input1, input2);
+            string input2 = Console.ReadLine().ToUpper();
+            Fire(input1, input2, game);
         }
-        public void Fire(int input1, int input2)
-        {
-            if (gameField[input1, input2, 1] == "0")
-            {
-                gameField[input1, input2, 0] = "[ ]";
-            }
 
+
+
+        public void Fire(int input1, string input2, string[,,] game)
+        {
+            int arrayPossition = Array.IndexOf(array, input2);
             
+            if (game[arrayPossition, input1, 1] == "0")
+            {
+                game[arrayPossition, input1, 0] = "[ ]";
+                moveCount++;    
+            }
         }
+
+
+
+        public void ViewLayer0()
+        {
+
+            for (int i = 0; i < 12; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    Console.Write($"{game[i, j, 0]}".PadRight(1));
+                }
+                Console.WriteLine();
+            }
+        }
+
+
+
+        //To view the gameLayer where the calculations end up. 
+        public void ViewLayer1()
+        {
+            for (int i = 0; i < 11; i++)
+            {
+                for (int j = 0; j < 11; j++)
+                {
+                    Console.Write($"{game[i, j, 1]}".PadRight(3));
+                }
+                Console.WriteLine();
+            }
+        }
+
+
+
         private void GenerateCPUBoats()
         {
             throw new NotImplementedException();
         }
+
+
 
         public void LostGame()
         {
             //När spelet är förlorat blir texten röd.
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("You lost the game mate. ");
-
         }
-        private void SeeHightScore()
+
+
+
+        public void SeeHightScore()
         {
             Console.Clear();
             Console.WriteLine("Top ten players: \n");
@@ -110,8 +129,10 @@ namespace _2023._10._13_Sänka_Skepp
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
             //Här kommer jag printa ut en lista med de top 10 bästa highscores.
-      
         }
+
+
+
         public void AddTohighScore()
         {
             //Idé om att använda nått från Collections! Typ en lista på 10 bästa spelare. 
