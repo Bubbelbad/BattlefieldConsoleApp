@@ -22,27 +22,31 @@ namespace _2023._10._13_Sänka_Skepp
 
         public void Menu()
         {
-            Console.WriteLine("Välkommen till sänka skepp!\n\n" +
+            bool menuStatus = true;
+            while (menuStatus)
+            {
+                Console.Clear();
+                Console.WriteLine("Välkommen till sänka skepp!\n\n" +
                               " - Spela nytt spel       [1]\n" +
                               " - Se HighScore          [2]\n" +
                               " - Avsluta               [3]\n");
-            string answer = Console.ReadLine();
-            switch (answer)
-            {
-                case "1":
-                    NewGame();
-                    break;
-                case "2":
-                    SeeHightScore();
-                    break;
-                case "3":
-                    System.Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Vänligen skriv en siffra mellan 1 - 3");
-                    break;
+                string answer = Console.ReadLine();
+                switch (answer)
+                {
+                    case "1":
+                        NewGame();
+                        break;
+                    case "2":
+                        SeeHightScore();
+                        break;
+                    case "3":
+                        System.Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Vänligen skriv en siffra mellan 1 - 3");
+                        break;
+                }
             }
-
         }
 
 
@@ -52,7 +56,7 @@ namespace _2023._10._13_Sänka_Skepp
             Console.Clear();
             gameF.SetGameField();
             gameF.ViewLayer0();
-            gameF.ViewLayer1();
+            Console.ReadLine();
         }
 
         private void GenerateCPUBoats()
@@ -69,6 +73,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
         private void SeeHightScore()
         {
+            Console.Clear();
             Console.WriteLine("Top ten players: \n");
 
             Console.WriteLine($"1.{highScore[0]}");
@@ -80,7 +85,10 @@ namespace _2023._10._13_Sänka_Skepp
             Console.WriteLine($"7.{highScore[6]}");
             Console.WriteLine($"8.{highScore[7]}");
             Console.WriteLine($"9.{highScore[8]}");
-            Console.WriteLine($"10.{highScore[9]}");
+            Console.WriteLine($"10.{highScore[9]}\n");
+
+            Console.WriteLine("Click to continue...");
+            Console.ReadLine();
             //Här kommer jag printa ut en lista med de top 10 bästa highscores.
       
         }
