@@ -34,7 +34,8 @@ namespace _2023._10._13_Sänka_Skepp
                 switch (answer)
                 {
                     case "1":
-                        NewGame();
+                        NewGame(gameF.SetGameField());
+                        Aim();
                         break;
                     case "2":
                         SeeHightScore();
@@ -50,15 +51,34 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-
-        public void NewGame()
+        public void NewGame(string[,,])
         {
             Console.Clear();
             gameF.SetGameField();
             gameF.ViewLayer0();
             Console.ReadLine();
+            Aim();
+            gameF.ViewLayer0();
         }
 
+
+        public void Aim()
+        {
+            Console.WriteLine("What column would you like to aim at?");
+            int input1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("What row would you like aim at?");
+            int input2 = Console.Read();
+            Fire(input1, input2);
+        }
+        public void Fire(int input1, int input2)
+        {
+            if (gameField[input1, input2, 1] == "0")
+            {
+                gameField[input1, input2, 0] = "[ ]";
+            }
+
+            
+        }
         private void GenerateCPUBoats()
         {
             throw new NotImplementedException();
@@ -92,7 +112,6 @@ namespace _2023._10._13_Sänka_Skepp
             //Här kommer jag printa ut en lista med de top 10 bästa highscores.
       
         }
-
         public void AddTohighScore()
         {
             //Idé om att använda nått från Collections! Typ en lista på 10 bästa spelare. 

@@ -33,7 +33,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         int X = 0;
         int Y = 1;
 
-        public void SetGameField()
+        public string[,,] SetGameField()
         {
             
             gameField[0, 11, 0] = cpuShips;
@@ -70,7 +70,8 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                     gameField[col, row, 1] = "0";
                 }
             }
-            
+
+            return gameField;
         }
 
         //To see the players view on layer 0:
@@ -99,6 +100,9 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                 Console.WriteLine();
             }
         }
+
+
+
 
             //Använd lager 0 för att displaya saker
             //Använd lager 1 för att räkna om båtarna ligger rätt. 
