@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _2023._10._13_Övningar_Lektion_3___Klasser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-        GameField gameField = new GameField();
+        GameField gameF = new GameField();
 
         public void Menu()
         {
@@ -44,16 +45,11 @@ namespace _2023._10._13_Sänka_Skepp
 
 
 
-
-
-       
-
-
-
         public void NewGame()
         {
             Console.Clear();
-            gameField.PrintNewGameField();
+            gameF.SetGameField();
+            gameF.ViewLayer0();
         }
 
         private void GenerateCPUBoats()
@@ -61,7 +57,11 @@ namespace _2023._10._13_Sänka_Skepp
             throw new NotImplementedException();
         }
 
-
+        public void LostGame()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("You lost the game mate. ");
+        }
         private void SeeHightScore()
         {
             throw new NotImplementedException();
