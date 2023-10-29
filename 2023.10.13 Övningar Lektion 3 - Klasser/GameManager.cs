@@ -39,7 +39,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-        //To give input for aiming at a specific square. This needs a failsafe!
+        //To give input for aiming at a specific square.
         public void Aim(string[,,] game)
         {
             bool aimStatus = false;
@@ -68,16 +68,16 @@ namespace _2023._10._13_Sänka_Skepp
         {
             int arrayPossition = Array.IndexOf(array, input2);
             
-            if (game[arrayPossition, input1, 1] == "0")
+            if (game[arrayPossition, input1, 1] == "0") //In case of miss
             {
-                game[arrayPossition, input1, 0] = "[ ]";
+                game[arrayPossition, input1, 0] = "[ ]"; //Updating viewLayer
                 moveCount++;
                 Console.WriteLine(">> This was a miss! ");
                 Console.ReadLine();
             }
-            else if (game[arrayPossition, input1, 1] == "1")
+            else if (game[arrayPossition, input1, 1] == "1") //In case of hit
             {
-                game[arrayPossition, input1, 0] = "[X]";
+                game[arrayPossition, input1, 0] = "[X]"; //Updating viewLayer
                 moveCount++;
                 Console.WriteLine(">> You hit one of the enemy ships! ");
                 Console.ReadLine();
