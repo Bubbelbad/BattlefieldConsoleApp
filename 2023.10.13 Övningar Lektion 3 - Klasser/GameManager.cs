@@ -50,7 +50,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-
+        //To fire the given coordinates.
         public void Fire(int input1, string input2, string[,,] game)
         {
             int arrayPossition = Array.IndexOf(array, input2);
@@ -58,7 +58,16 @@ namespace _2023._10._13_Sänka_Skepp
             if (game[arrayPossition, input1, 1] == "0")
             {
                 game[arrayPossition, input1, 0] = "[ ]";
-                moveCount++;    
+                moveCount++;
+                Console.WriteLine(">> This was a miss! ");
+                Console.ReadLine();
+            }
+            else if (game[arrayPossition, input1, 1] == "1")
+            {
+                game[arrayPossition, input1, 0] = "[X]";
+                moveCount++;
+                Console.WriteLine(">> You hit one of the enemy ships! ");
+                Console.ReadLine();
             }
         }
 
