@@ -26,6 +26,7 @@ namespace _2023._10._13_Sänka_Skepp
             this.YCoordinate = randomY;
             this.XCoordinate = randomY + size;
             this.Size = size;
+            this.ShipAlive = true;
         }
 
     }

@@ -59,7 +59,6 @@ namespace _2023._10._13_Sänka_Skepp
                     Console.WriteLine("Please put in two coordinates! From 1-10, then A-J\n");
                 }
             }
-            
         }
 
 
@@ -88,7 +87,6 @@ namespace _2023._10._13_Sänka_Skepp
 
         public void ViewLayer0()
         {
-
             for (int i = 0; i < 12; i++)
             {
                 for (int j = 0; j < 12; j++)
@@ -151,7 +149,7 @@ namespace _2023._10._13_Sänka_Skepp
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
             //Här kommer jag printa ut en lista med de top 10 bästa highscores.
-            //Här kommer jag ju kunna använda StreamReader och Files! Så himla roligt. 
+            //Här kommer jag ju kunna använda StreamReader och Files! Fett.
         }
 
 
@@ -169,7 +167,7 @@ namespace _2023._10._13_Sänka_Skepp
 
 
             //Idé om att skapa en .txt fil med 10 bästa spelare. Kanske använda StreamWriter för att lägga till? 
-            //Kanske kan jag kombinera med någon queue från collections? Så ballt!!
+            //Kanske kan jag kombinera med någon queue från collections? 
         }
 
     }
