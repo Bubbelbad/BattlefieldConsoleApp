@@ -138,14 +138,25 @@ namespace _2023._10._13_Sänka_Skepp
             Console.WriteLine("Click to continue...");
             Console.ReadLine();
             //Här kommer jag printa ut en lista med de top 10 bästa highscores.
+            //Här kommer jag ju kunna använda StreamReader och Files! Så himla roligt. 
         }
 
 
 
-        public void AddTohighScore()
+        public void AddHighScore()
         {
-            //Idé om att använda nått från Collections! Typ en lista på 10 bästa spelare. 
-            //Kanske en sortedlist, dictionaory eller tuples som sparas i en lista med 10 platser.
+            string filePath = "folder/highScore.txt";
+
+            Directory.CreateDirectory( filePath );
+            if (!File.Exists(filePath))
+            {
+                File.Create(filePath);
+            }
+            StreamWriter sw = new StreamWriter(filePath);
+
+
+            //Idé om att skapa en .txt fil med 10 bästa spelare. Kanske använda StreamWriter för att lägga till? 
+            //Kanske kan jag kombinera med någon queue från collections? Så ballt!!
         }
 
     }
