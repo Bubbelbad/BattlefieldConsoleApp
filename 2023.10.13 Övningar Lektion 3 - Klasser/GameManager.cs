@@ -39,14 +39,27 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-
+        //To give input for aiming at a specific square. This needs a failsafe!
         public void Aim(string[,,] game)
         {
-            Console.WriteLine("What column would you like to aim at?");
-            int input1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("What row would you like aim at?");
-            string input2 = Console.ReadLine().ToUpper();
-            Fire(input1, input2, game);
+            bool aimStatus = false;
+            while (!aimStatus)
+            {
+                try
+                {
+                    Console.WriteLine("What column would you like to aim at?");
+                    int input1 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("What row would you like aim at?");
+                    string input2 = Console.ReadLine().ToUpper();
+                    Fire(input1, input2, game);
+                    aimStatus = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Please put in two coordinates! From 1-10, then A-J\n");
+                }
+            }
+            
         }
 
 

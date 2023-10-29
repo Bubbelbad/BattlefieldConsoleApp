@@ -80,9 +80,6 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         }
 
 
-
-
-
             //Använd lager 0 för att displaya saker
             //Använd lager 1 för att räkna om båtarna ligger rätt. 
             //Spelarna får bara köra en get; för att bara kunna se lager 1.
@@ -93,41 +90,6 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             //Först loopar man igenom ifall någon av båtarna har koordinaten man skjutit. 
             //Sedan loopar man igenom vad utgången i kartan blir. 
 
-            //Jag skulle kunna göra en switch case,
-            //där i eller två speglar oika symboler för att visa spelplanen. 
 
-            //Kolla på en video om 3d-arrayer och återkom. Gör några övningar till du greppat konceptet!
-            //Sen kan du göra en Sänka-skepp med det.
-        
-
-      //  public void Fire(int row, int col) //För att välja vilken ruta vi vill bomba. 
-      //  {
-      //      Console.WriteLine("\nVilken ruta vill du bomba? \n");
-      //      Console.Write("Välj in rad (lodräd): ");
-      //      int answer = int.Parse(Console.ReadLine());
-      //      Console.Write("Välj en kolumn (vågrät): ");
-      //      int answer2 = int.Parse(Console.ReadLine());
-      //      bool status = false;
-      //
-      //      for (int i = 0; row < gameField.Length; row++)
-      //      {
-      //          for (int j = 0; col < gameField[row].Length; col++)
-      //          {
-      //              if (answer == row && answer2 == col && gameField[row][col] == "[~]")
-      //              {
-      //                  gameField[row][col][0] = "  "; //Här uppdaterar vi om det blev en miss. 
-      //                  Console.WriteLine("Du missade, inget skepp här.");
-      //              }
-      //              else if (answer == row && answer2 == col && gameField[row][col] == "[X]")
-      //              {
-      //                  Console.WriteLine("Denna rutan har du redan skjutit på.");
-      //              }
-      //          }
-      //          Console.WriteLine();
-      //      }
-      //
-      //  }
-
-      
     }
 }
