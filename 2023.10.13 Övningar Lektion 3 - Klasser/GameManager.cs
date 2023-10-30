@@ -73,6 +73,7 @@ namespace _2023._10._13_Sänka_Skepp
             if (game[arrayPossition, input1, 1] == "0") //In case of miss
             {
                 game[arrayPossition, input1, 0] = "[ ]"; //Updating viewLayer
+                game[arrayPossition, input1, 1] = "2";
                 moveCount++;
                 Console.WriteLine(">> This was a miss! ");
                 Console.ReadKey();
@@ -80,10 +81,18 @@ namespace _2023._10._13_Sänka_Skepp
             else if (game[arrayPossition, input1, 1] == "1") //In case of hit
             {
                 game[arrayPossition, input1, 0] = "[X]"; //Updating viewLayer
+                game[arrayPossition, input1, 1] = "2";
                 moveCount++;
                 Console.WriteLine(">> You hit one of the enemy ships! ");
                 Console.ReadKey();
             }
+            else if (game[arrayPossition, input1, 1] == "2")
+            {
+                Console.WriteLine(">> You already hit this field! Try again...");
+                Console.ReadKey();
+            }
+
+            
         }
 
 
