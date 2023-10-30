@@ -33,16 +33,20 @@ namespace _2023._10._13_Sänka_Skepp
             while (menuStatus)
             {
                 ViewLayer0();
-                Aim(game);
+                bool count = Aim(game);
                 Console.Clear();
-                ViewLayer0();
                 ViewLayer1();
+
+                if (count)
+                {
+                    moveCount++;
+                }
             }
         }
 
 
         //To give input for aiming at a specific square.
-        public void Aim(string[,,] game)
+        public bool Aim(string[,,] game)
         {
             bool aimStatus = false;
             while (!aimStatus)
@@ -53,20 +57,23 @@ namespace _2023._10._13_Sänka_Skepp
                     int input1 = int.Parse(Console.ReadLine());
                     Console.WriteLine("What row would you like aim at?");
                     string input2 = Console.ReadLine().ToUpper();
-                    Fire(input1, input2, game);
+                    bool success = Fire(input1, input2, game);
                     aimStatus = true;
+                    return true;
                 }
                 catch
                 {
                     Console.WriteLine("Please put in two coordinates! From 1-10, then A-J\n");
+                    return false;
                 }
-
+               
             }
+            return false;
         }
 
 
         //To fire the given coordinates.
-        public void Fire(int input1, string input2, string[,,] game)
+        public bool Fire(int input1, string input2, string[,,] game)
         {
             int arrayPossition = Array.IndexOf(array, input2);
             
@@ -77,22 +84,25 @@ namespace _2023._10._13_Sänka_Skepp
                 moveCount++;
                 Console.WriteLine(">> This was a miss! ");
                 Console.ReadKey();
+                return true;
             }
             else if (game[arrayPossition, input1, 1] == "1") //In case of hit
             {
                 game[arrayPossition, input1, 0] = "[X]"; //Updating viewLayer
-                game[arrayPossition, input1, 1] = "2";
+                game[arrayPossition, input1, 1] = "X";
                 moveCount++;
                 Console.WriteLine(">> You hit one of the enemy ships! ");
                 Console.ReadKey();
+                return true;
             }
-            else if (game[arrayPossition, input1, 1] == "2")
+            else if (game[arrayPossition, input1, 1] == "2" || game[arrayPossition, input1, 1] == "X")
             {
                 Console.WriteLine(">> You already hit this field! Try again...");
                 Console.ReadKey();
+                return false;
             }
 
-            
+            return false;
         }
 
 
