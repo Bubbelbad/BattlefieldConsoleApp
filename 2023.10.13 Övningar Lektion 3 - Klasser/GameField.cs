@@ -55,7 +55,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                 nums++;
             }
 
-            //Setting the unexplored ocean chars in view-layer
+            //Setting the unexplored ocean char "~" in view-layer
             for (int col = 1; col < 11; col++)
             {
                 for (int row = 1; row < 11; row++)
@@ -79,7 +79,21 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             List <Ship> lala = AddShips();
             foreach (Ship ship in lala)
             {
-                gameField[ship.XCoordinate, ship.YCoordinate, 1] = "1";
+                try
+                {
+                    for (int i = ship.XCoordinate; i <= ship.XCoordinate + ship.Size; i++)
+                    gameField[i, ship.XCoordinate, 1] = "1";
+                }
+                catch (Exception e)
+                {
+                    for (int i = ship.XCoordinate; i >= ship.XCoordinate - ship.Size; i--)
+                    gameField[ship.XCoordinate, i, 1] = "1";
+                }
+                catch
+                {
+                    for (int i = ship.XCoordinate; i <= ship.XCoordinate + ship.Size; i++)
+                    gameField[ship.XCoordinate, i, 1] = "1";
+                }
             }
             return gameField;
         }
@@ -93,7 +107,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             bool addStatus = false;
             while (!addStatus)
             {
-                for (int i = 5;  i > 2; i--)
+                for (int i = 4;  i >= 1; i--)
                 {
                     listOfShips.Add(new Ship("krigs", i));
                 }

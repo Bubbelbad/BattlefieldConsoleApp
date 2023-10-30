@@ -35,6 +35,8 @@ namespace _2023._10._13_Sänka_Skepp
                 ViewLayer0();
                 Aim(game);
                 Console.Clear();
+                ViewLayer0();
+                ViewLayer1();
             }
         }
 
@@ -58,6 +60,7 @@ namespace _2023._10._13_Sänka_Skepp
                 {
                     Console.WriteLine("Please put in two coordinates! From 1-10, then A-J\n");
                 }
+
             }
         }
 
@@ -72,14 +75,14 @@ namespace _2023._10._13_Sänka_Skepp
                 game[arrayPossition, input1, 0] = "[ ]"; //Updating viewLayer
                 moveCount++;
                 Console.WriteLine(">> This was a miss! ");
-                Console.ReadLine();
+                Console.ReadKey();
             }
             else if (game[arrayPossition, input1, 1] == "1") //In case of hit
             {
                 game[arrayPossition, input1, 0] = "[X]"; //Updating viewLayer
                 moveCount++;
                 Console.WriteLine(">> You hit one of the enemy ships! ");
-                Console.ReadLine();
+                Console.ReadKey();
             }
         }
 
@@ -110,13 +113,6 @@ namespace _2023._10._13_Sänka_Skepp
                 }
                 Console.WriteLine();
             }
-        }
-
-
-
-        private void GenerateCPUBoats()
-        {
-            throw new NotImplementedException();
         }
 
 

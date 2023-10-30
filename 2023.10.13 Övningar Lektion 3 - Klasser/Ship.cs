@@ -11,7 +11,6 @@ namespace _2023._10._13_Sänka_Skepp
         public string Name { get; set; }
 
         public string Id { get; set; }
-        public int YCoordinate { get; }
         public int XCoordinate { get; }
         public int Size { get; }
         public bool ShipAlive { get; }
@@ -23,8 +22,7 @@ namespace _2023._10._13_Sänka_Skepp
         public Ship(string name, int size)
         {
             this.Name = name;
-            this.YCoordinate = randomY;
-            this.XCoordinate = randomY + size;
+            this.XCoordinate = randomY;
             this.Size = size;
             this.ShipAlive = true;
         }
