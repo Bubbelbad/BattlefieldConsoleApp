@@ -177,16 +177,35 @@ namespace _2023._10._13_Sänka_Skepp
 
 
 
-        public void AddHighScore()
+        public void HighScore(int score)
         {
+            PriorityQueue<string, int> highScoreQueue = new PriorityQueue<string, int>(9);
             string filePath = "folder/highScore.txt";
+            string file = "highScore.txt";
 
             Directory.CreateDirectory( filePath );
             if (!File.Exists(filePath))
             {
                 File.Create(filePath);
             }
-            StreamWriter sw = new StreamWriter(filePath);
+            if (File.Exists(filePath))
+            {
+          //      foreach (int Priority in highScoreQueue)
+          //      {
+          //          if (score > num)
+          //          {
+          //
+          //          }
+          //      }
+          //      StreamReader sr = new StreamReader(filePath);
+          //      filePath = sr.ReadToEnd();
+          //      sr.Close();
+          //      if (score > highScore)
+          //      {
+          //
+          //      }
+            }
+
 
 
             //Idé om att skapa en .txt fil med 10 bästa spelare. Kanske använda StreamWriter för att lägga till? 
