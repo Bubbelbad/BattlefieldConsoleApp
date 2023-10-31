@@ -74,7 +74,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             }
 
 
-            //This is not done! It need to loop somehow, to set ships length. To be continued...
+            //This is not done! 
             //Need to be worked on, but I am too tired right now. 
             List <Ship> lala = AddShips();
             foreach (Ship ship in lala)

@@ -1,6 +1,7 @@
 ﻿using _2023._10._13_Övningar_Lektion_3___Klasser;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,13 +36,20 @@ namespace _2023._10._13_Sänka_Skepp
                 ViewLayer0();
                 bool count = Aim(game);
                 Console.Clear();
-                ViewLayer1();
-
                 if (count)
                 {
                     moveCount++;
                 }
+                bool win = IsGameWon();
+                if (win)
+                {
+                    Console.Clear() ;
+                    Console.WriteLine("Congratulations");
+                    Console.ReadKey();
+                    return;
+                }
             }
+
         }
 
 
@@ -106,7 +114,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-
+        //To view the actual game view
         public void ViewLayer0()
         {
             for (int i = 0; i < 12; i++)
@@ -121,7 +129,7 @@ namespace _2023._10._13_Sänka_Skepp
 
 
 
-        //To view the gameLayer where the calculations end up. 
+        //To view the invisible gameLayer where the ships are visible
         public void ViewLayer1()
         {
             for (int i = 0; i < 11; i++)
@@ -183,6 +191,30 @@ namespace _2023._10._13_Sänka_Skepp
 
             //Idé om att skapa en .txt fil med 10 bästa spelare. Kanske använda StreamWriter för att lägga till? 
             //Kanske kan jag kombinera med någon queue från collections? 
+        }
+
+        public bool IsGameWon()
+        {
+            int count = 0;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int j = 0; j < 11; j++)
+                {
+                    if (game[i, i, 1] == "1")
+                    {
+                        count++;
+                    }
+                }
+            }
+            if (count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+           
         }
 
     }
