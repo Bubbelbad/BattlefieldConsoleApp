@@ -8,7 +8,7 @@ namespace _2023._10._13_Sänka_Skepp
     {
         static void Main(string[] args)
         {
-
+            FileHandler handler = new FileHandler();
             Menu menu = new Menu();
             menu.TheMenu();
 

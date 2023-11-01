@@ -12,8 +12,10 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
     internal class GameField
     {
 
+
         public GameField()
         {
+            
 
         }
 

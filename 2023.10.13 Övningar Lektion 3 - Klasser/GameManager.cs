@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace _2023._10._13_Sänka_Skepp
     internal class GameManager
     {
         GameField gameF = new GameField();
+
+        
 
 
         int moveCount = 0;
@@ -176,41 +179,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-
-        public void HighScore(int score)
-        {
-            PriorityQueue<string, int> highScoreQueue = new PriorityQueue<string, int>(9);
-            string filePath = "folder/highScore.txt";
-            string file = "highScore.txt";
-
-            Directory.CreateDirectory( filePath );
-            if (!File.Exists(filePath))
-            {
-                File.Create(filePath);
-            }
-            if (File.Exists(filePath))
-            {
-          //      foreach (int Priority in highScoreQueue)
-          //      {
-          //          if (score > num)
-          //          {
-          //
-          //          }
-          //      }
-          //      StreamReader sr = new StreamReader(filePath);
-          //      filePath = sr.ReadToEnd();
-          //      sr.Close();
-          //      if (score > highScore)
-          //      {
-          //
-          //      }
-            }
-
-
-
-            //Idé om att skapa en .txt fil med 10 bästa spelare. Kanske använda StreamWriter för att lägga till? 
-            //Kanske kan jag kombinera med någon queue från collections? 
-        }
+        
 
         public bool IsGameWon()
         {
@@ -235,6 +204,11 @@ namespace _2023._10._13_Sänka_Skepp
             }
            
         }
+
+
+
+        
+
 
     }
 }
