@@ -9,8 +9,6 @@ namespace _2023._10._13_Sänka_Skepp
     internal class Ship : IShip
     {
         public string Name { get; set; }
-
-        public string Id { get; set; }
         public int XCoordinate { get; }
         public int Size { get; }
         public bool ShipAlive { get; }

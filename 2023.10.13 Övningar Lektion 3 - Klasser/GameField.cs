@@ -20,6 +20,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         }
 
 
+
         string cpuShips =     $" CPU's Skepp:";
         string krigsfartyg =  $"  - Krigsfartyg(5)";
         string ubåt =         $"  - Ubåt(4)";
@@ -27,11 +28,13 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         string roddbåt =      $"  - Roddbåt(2)";
 
 
-        //variables för layer 0:
+
+        //variables for visible layer 0. Alphabetic chars + nums for easier navigation:
         string[,,] gameField = new string[12, 12, 2];
         string[] array = new string[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
         string unExplored = "~";
         int nums = 1;
+
 
 
 
@@ -75,11 +78,9 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                 }
             }
 
-
-            //This is not done! 
-            //Need to be worked on, but I am too tired right now. 
-            List <Ship> lala = AddShips();
-            foreach (Ship ship in lala)
+            //CreateShips returns a list from which I add all the ships to the hidden gameField-layer
+            List <Ship> shipsToAdd = CreateShips();
+            foreach (Ship ship in shipsToAdd)
             {
                 try
                 {
@@ -91,18 +92,13 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                     for (int i = ship.XCoordinate; i >= ship.XCoordinate - ship.Size; i--)
                     gameField[ship.XCoordinate, i, 1] = "1";
                 }
-                catch
-                {
-                    for (int i = ship.XCoordinate; i <= ship.XCoordinate + ship.Size; i++)
-                    gameField[ship.XCoordinate, i, 1] = "1";
-                }
             }
             return gameField;
         }
 
         //Function to add 4 new ships to a list that is used in SetGameField.
         //Might not be accurate, needs testing!
-        public List<Ship> AddShips()
+        public List<Ship> CreateShips()
         {
             List<Ship> listOfShips = new List<Ship>();
 
@@ -117,18 +113,5 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             }
             return listOfShips;
         }
-
-
-            //Använd lager 0 för att displaya saker
-            //Använd lager 1 för att räkna om båtarna ligger rätt. 
-            //Spelarna får bara köra en get; för att bara kunna se lager 1.
-            //GameManager kommer kunna köra set; på lager två 
-
-
-            //Man kan också använda sig av båtarnas interna koordinater. 
-            //Först loopar man igenom ifall någon av båtarna har koordinaten man skjutit. 
-            //Sedan loopar man igenom vad utgången i kartan blir. 
-
-
     }
 }

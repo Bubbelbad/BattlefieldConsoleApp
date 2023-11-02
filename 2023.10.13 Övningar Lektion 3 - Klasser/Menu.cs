@@ -10,6 +10,8 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
     internal class Menu
     {
         GameManager gameManager = new GameManager();
+        FileHandler fileHandler = new FileHandler();
+
 
         public void TheMenu()
         {

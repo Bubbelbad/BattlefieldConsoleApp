@@ -13,11 +13,13 @@ namespace _2023._10._13_Sänka_Skepp
     {
         GameField gameF = new GameField();
 
-        
-
-
+       
+        //To keep track of the number of moves for creating score
         int moveCount = 0;
+
+        //The different game fields, two layers - one invisible and one visible.
         string[,,] game = new string[12, 12, 2];
+
 
         string[] array = new string[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
         List<string> highScore = new List<string> { "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", };
@@ -56,7 +58,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-        //To give input for aiming at a specific square.
+        //To give input for aiming at a specific square and then calling Fire()
         public bool Aim(string[,,] game)
         {
             bool aimStatus = false;
@@ -83,7 +85,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-        //To fire the given coordinates.
+        //To fire the given coordinates from Aim
         public bool Fire(int input1, string input2, string[,,] game)
         {
             int arrayPossition = Array.IndexOf(array, input2);
@@ -117,7 +119,7 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-        //To view the actual game view
+        //To view the users game view
         public void ViewLayer0()
         {
             for (int i = 0; i < 12; i++)
@@ -132,7 +134,7 @@ namespace _2023._10._13_Sänka_Skepp
 
 
 
-        //To view the invisible gameLayer where the ships are visible
+        //To view the "invisible" gameLayer where the ships, hits, misses and unexplored squares are saved
         public void ViewLayer1()
         {
             for (int i = 0; i < 11; i++)
@@ -146,10 +148,9 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-
+        //This function will be implemented at the end, when CPU also has a gameField and can shoot.
         public void LostGame()
         {
-            //När spelet är förlorat blir texten röd.
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("You lost the game mate. ");
         }
@@ -204,11 +205,6 @@ namespace _2023._10._13_Sänka_Skepp
             }
            
         }
-
-
-
-        
-
 
     }
 }

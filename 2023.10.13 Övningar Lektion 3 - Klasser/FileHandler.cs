@@ -14,7 +14,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         //Creates paths, directory and so on. 
         public void Filehandling()
         {
-            string folderPath = "thisFolder";
+            string folderPath = "HighScores";
             string copyPath = "copy.txt";
             Directory.CreateDirectory(folderPath);
             File.Copy(scorePath, copyPath);
