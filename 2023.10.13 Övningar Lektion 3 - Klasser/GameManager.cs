@@ -119,7 +119,9 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-        //To view the users game view
+
+
+        //To view the users game view layer
         public void ViewLayer0()
         {
             for (int i = 0; i < 12; i++)
@@ -156,32 +158,9 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-
-        public void SeeHightScore()
-        {
-            Console.Clear();
-            Console.WriteLine("Top ten players: \n");
-
-            Console.WriteLine($"1.{highScore[0]}");
-            Console.WriteLine($"2.{highScore[1]}");
-            Console.WriteLine($"3.{highScore[2]}");
-            Console.WriteLine($"4.{highScore[3]}");
-            Console.WriteLine($"5.{highScore[4]}");
-            Console.WriteLine($"6.{highScore[5]}");
-            Console.WriteLine($"7.{highScore[6]}");
-            Console.WriteLine($"8.{highScore[7]}");
-            Console.WriteLine($"9.{highScore[8]}");
-            Console.WriteLine($"10.{highScore[9]}\n");
-
-            Console.WriteLine("Click to continue...");
-            Console.ReadLine();
-            //Här kommer jag printa ut en lista med de top 10 bästa highscores.
-            //Här kommer jag ju kunna använda StreamReader och Files! Fett.
-        }
-
-
         
-
+        //This function looks if there are any "1" / ships left in the hidden layer. 
+        //If not, game is won and we'll save the high score.
         public bool IsGameWon()
         {
             int count = 0;
