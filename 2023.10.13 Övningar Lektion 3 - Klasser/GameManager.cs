@@ -15,7 +15,7 @@ namespace _2023._10._13_Sänka_Skepp
 
        
         //To keep track of the number of moves for creating score
-        int moveCount = 0;
+        static int moveCount = 0;
 
         //The different game fields, two layers - one invisible and one visible.
         string[,,] game = new string[12, 12, 2];
@@ -197,7 +197,14 @@ namespace _2023._10._13_Sänka_Skepp
             }
             if (count == 0)
             {
+                Console.Clear();
+                Console.WriteLine("Congratulations! You won the game.\n");
+                Console.WriteLine("Please enter your name: ");
+                string name = Console.ReadLine();
+                new HighScore(name, moveCount);
+
                 return true;
+
             }
             else
             {
