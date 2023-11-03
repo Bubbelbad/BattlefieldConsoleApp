@@ -13,6 +13,7 @@ namespace _2023._10._13_Sänka_Skepp
     {
         GameField gameF = new GameField();
 
+
        
         //To keep track of the number of moves for creating score
         static int moveCount = 0;
@@ -51,6 +52,7 @@ namespace _2023._10._13_Sänka_Skepp
                     Console.Clear() ;
                     Console.WriteLine("Congratulations");
                     Console.ReadKey();
+
                     return;
                 }
             }

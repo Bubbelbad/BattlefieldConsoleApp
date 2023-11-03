@@ -29,12 +29,36 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             }
         }
 
-
-        //This function gets the current scores from scorePath and makes them readable for C#?
-        public List<HighScore> GetScoresFromFile()
+        public void ViewScores(List<HighScore> list)
         {
-            List<HighScore> highScores = new List<HighScore>();
-            using (StreamReader sr = new StreamReader(scorePath))
+            Console.WriteLine("HIGHS SCORES - BEST PLAYERS:\n");
+            for (int i = 1; i <= 12; i++)
+            {
+                try
+                {
+                    Console.WriteLine($"{i}. {list[i].Name} - {list[i].Score}");
+                }
+                catch
+                {
+                    Console.WriteLine($"{i}. No score to preview");
+
+                    if (i == 10)
+                    {
+                        Console.WriteLine("\nClick to continue...");
+                        Console.ReadLine();
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+        }
+        //This function gets the current scores from scorePath and makes them readable for C#?
+        public void GetScoresFromFile(List<HighScore> highScores)
+        {
+            using (StreamReader sr = new StreamReader(scoreFilePath))
             {
                 string line = sr.ReadLine();
                 while (line != null)
@@ -48,7 +72,6 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                     line = sr.ReadLine();
                 }
             }
-            return highScores;
         }
 
 

@@ -11,10 +11,14 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
     {
         GameManager gameManager = new GameManager();
         FileHandler fileHandler = new FileHandler();
+        HighScoreList list = new HighScoreList();
 
 
         public void TheMenu()
         {
+            fileHandler.Filehandling();
+            fileHandler.GetScoresFromFile(list.listOfHighScore);
+
             bool menuStatus = true;
             while (menuStatus)
             {
@@ -30,14 +34,18 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                         gameManager.GameManagerMenu();
                         break;
                     case "2":
-                        gameManager.SeeHightScore();
+                        Console.Clear();
+                        fileHandler.ViewScores(list.listOfHighScore);
                         break;
                     case "3":
+                        Console.Clear();
+                        Console.WriteLine("THANKS FOR CHECKING OUT THIS PROJECT! :)");
                         System.Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Vänligen skriv en siffra mellan 1 - 3");
                         break;
+
                 }
             }
         }
