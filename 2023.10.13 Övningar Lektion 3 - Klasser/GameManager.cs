@@ -12,6 +12,8 @@ namespace _2023._10._13_Sänka_Skepp
     internal class GameManager
     {
         GameField gameF = new GameField();
+        HighScoreList list = new HighScoreList();
+        FileHandler fileHandler = new FileHandler();
 
 
        
@@ -46,11 +48,10 @@ namespace _2023._10._13_Sänka_Skepp
                 {
                     moveCount++;
                 }
-                bool win = IsGameWon();
+                bool win = IsGameWon(list);
                 if (win)
                 {
                     Console.Clear() ;
-                    Console.WriteLine("Congratulations");
                     Console.ReadKey();
 
                     return;
@@ -123,7 +124,7 @@ namespace _2023._10._13_Sänka_Skepp
 
 
 
-        //To view the users game view layer
+        //To view the users 'game view' layer
         public void ViewLayer0()
         {
             for (int i = 0; i < 12; i++)
@@ -162,8 +163,8 @@ namespace _2023._10._13_Sänka_Skepp
 
         
         //This function looks if there are any "1" / ships left in the hidden layer. 
-        //If not, game is won and we'll save the high score.
-        public bool IsGameWon()
+        //If no ships/"1" are left, the game is won and we'll save the high score.
+        public bool IsGameWon(HighScoreList list)
         {
             int count = 0;
             for (int i = 0; i < 11; i++)
@@ -182,7 +183,7 @@ namespace _2023._10._13_Sänka_Skepp
                 Console.WriteLine("Congratulations! You won the game.\n");
                 Console.WriteLine("Please enter your name: ");
                 string name = Console.ReadLine();
-                new HighScore(name, moveCount);
+                list.AddHighScore(name, moveCount);
 
                 return true;
 
