@@ -55,7 +55,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                 }
             }
         }
-        //This function gets the current scores from scorePath and makes them readable for C#?
+
         public void GetScoresFromFile(List<HighScore> highScores)
         {
             using (StreamReader sr = new StreamReader(scoreFilePath))
