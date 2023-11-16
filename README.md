@@ -5,6 +5,8 @@ This is an ***unfinished*** and ongoing project!
 My goal is to make an easier version of this game with only one game field with four hidden boats. 
 The players goal is to uncover all boats in as few moves as possible.
 
+(The player does not have it's own gamefield and won't get shot at by the CPU)
+
 ## Things that I want to practice how to get done with this project: 
 - Highscore that creates and saves ten top players/highscores
 - A function that randomizes the ships and places them in the hidden game field
