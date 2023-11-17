@@ -12,21 +12,17 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
     internal class GameField
     {
 
+        string cpuShips = $" CPU's Skepp:";
+        string krigsfartyg = $"  - Krigsfartyg(5)";
+        string ubåt = $"  - Ubåt(4)";
+        string vanligtSkepp = $"  - Vanligt skepp(3)";
+        string roddbåt = $"  - Roddbåt(2)";
+
 
         public GameField()
         {
             
-
         }
-
-
-
-        string cpuShips =     $" CPU's Skepp:";
-        string krigsfartyg =  $"  - Krigsfartyg(5)";
-        string ubåt =         $"  - Ubåt(4)";
-        string vanligtSkepp = $"  - Vanligt skepp(3)";
-        string roddbåt =      $"  - Roddbåt(2)";
-
 
 
         //variables for visible layer 0. Alphabetic chars + nums for easier navigation:
@@ -34,8 +30,6 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         string[] array = new string[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
         string unExplored = "~";
         int nums = 1;
-
-
 
 
         public string[,,] SetGameField()
@@ -47,11 +41,13 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             gameField[3, 11, 0] = vanligtSkepp;
             gameField[4, 11, 0] = roddbåt;
 
+
             //Setting the navigation-letters in view-Layer
             for (int col = 0; col < 11; col++)
             {
                 gameField[col, 0, 0] = $"[{array[col]}]";
             }
+
 
             //Setting the navigations numbers in view-Layer
             for (int row = 1; row < 11; row++)
@@ -59,6 +55,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                 gameField[0, row, 0] = $"[{nums}]";
                 nums++;
             }
+
 
             //Setting the unexplored ocean char "~" in view-layer
             for (int col = 1; col < 11; col++)
@@ -69,6 +66,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                 }
             }
 
+
             //Setting the empty layer with 0 in game layer
             for (int col = 1; col < 11; col++)
             {
@@ -77,6 +75,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                     gameField[col, row, 1] = "0";
                 }
             }
+
 
             //CreateShips returns a list from which I add all the ships to the hidden gameField-layer
             List <Ship> shipsToAdd = CreateShips();
@@ -96,8 +95,8 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
             return gameField;
         }
 
+
         //Function to add 4 new ships to a list that is used in SetGameField.
-        //Might not be accurate, needs testing!
         public List<Ship> CreateShips()
         {
             List<Ship> listOfShips = new List<Ship>();

@@ -12,14 +12,6 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         string scorePath = @"C:\Users\SOS23\source\repos\2023.10.13 Övningar Lektion 3 - Klasser\2023.10.13 Övningar Lektion 3 - Klasser\bin\Debug\net6.0\scores";
         string scoreFilePath = "scores.txt";
         public List<HighScore> listOfHighScore = new List<HighScore>();
-        HighScoreManager fileHandler = new HighScoreManager();
-
-
-
-        public HighScoreManager SetFileHandler()
-        {
-            return this.fileHandler;
-        }
 
 
         public void AddHighScore(string name, int points)

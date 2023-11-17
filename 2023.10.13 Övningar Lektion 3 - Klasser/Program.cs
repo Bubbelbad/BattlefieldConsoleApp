@@ -10,9 +10,6 @@ namespace _2023._10._13_Sänka_Skepp
         {
             Menu menu = new Menu();
             menu.TheMenu();
-
-
-
         }
     }
 }
