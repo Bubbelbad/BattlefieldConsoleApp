@@ -11,8 +11,6 @@ namespace _2023._10._13_Sänka_Skepp
         string Name { get; }
         int XCoordinate { get; }
         int Size { get; }
-
         bool ShipAlive { get; }
-
     }
 }

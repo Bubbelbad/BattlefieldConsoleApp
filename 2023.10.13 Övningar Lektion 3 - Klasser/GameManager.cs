@@ -11,18 +11,13 @@ namespace _2023._10._13_Sänka_Skepp
 {
     internal class GameManager
     {
+
         GameField gameF = new GameField();
-        HighScoreList list = new HighScoreList();
-        FileHandler fileHandler = new FileHandler();
-
-
-       
-        //To keep track of the number of moves for creating score
+        HighScoreManager highScoreManager = null;
         static int moveCount = 0;
 
         //The different game fields, two layers - one invisible and one visible.
         string[,,] game = new string[12, 12, 2];
-
 
         string[] array = new string[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
         List<string> highScore = new List<string> { "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", };
@@ -33,7 +28,13 @@ namespace _2023._10._13_Sänka_Skepp
 
         }
 
-        
+
+        public void SetFileHandler(HighScoreManager highScoreManager1)
+        {
+            this.highScoreManager = highScoreManager1;
+        }
+
+
         public void GameManagerMenu()
         {
             Console.Clear();
@@ -48,7 +49,7 @@ namespace _2023._10._13_Sänka_Skepp
                 {
                     moveCount++;
                 }
-                bool win = IsGameWon(list);
+                bool win = IsGameWon();
                 if (win)
                 {
                     Console.Clear() ;
@@ -57,7 +58,6 @@ namespace _2023._10._13_Sänka_Skepp
                     return;
                 }
             }
-
         }
 
 
@@ -82,7 +82,6 @@ namespace _2023._10._13_Sänka_Skepp
                     Console.WriteLine("Please put in two coordinates! From 1-10, then A-J\n");
                     return false;
                 }
-               
             }
             return false;
         }
@@ -122,8 +121,6 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-
-
         //To view the users 'game view' layer
         public void ViewLayer0()
         {
@@ -136,7 +133,6 @@ namespace _2023._10._13_Sänka_Skepp
                 Console.WriteLine();
             }
         }
-
 
 
         //To view the "invisible" gameLayer where the ships, hits, misses and unexplored squares are saved
@@ -161,10 +157,9 @@ namespace _2023._10._13_Sänka_Skepp
         }
 
 
-        
         //This function looks if there are any "1" / ships left in the hidden layer. 
         //If no ships/"1" are left, the game is won and we'll save the high score.
-        public bool IsGameWon(HighScoreList list)
+        public bool IsGameWon()
         {
             int count = 0;
             for (int i = 0; i < 11; i++)
@@ -183,17 +178,14 @@ namespace _2023._10._13_Sänka_Skepp
                 Console.WriteLine("Congratulations! You won the game.\n");
                 Console.WriteLine("Please enter your name: ");
                 string name = Console.ReadLine();
-                list.AddHighScore(name, moveCount);
 
+                highScoreManager.AddHighScore(name, moveCount);
                 return true;
-
             }
             else
             {
                 return false;
             }
-           
         }
-
     }
 }

@@ -11,6 +11,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         public string Name { get; set; }
         public int Score { get; set; }
 
+
         public HighScore(string name, int score)
         {
             this.Name = name;

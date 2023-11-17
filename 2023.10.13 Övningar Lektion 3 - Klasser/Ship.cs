@@ -17,6 +17,7 @@ namespace _2023._10._13_Sänka_Skepp
 
         int randomY = rnd.Next(1, 11);
 
+
         public Ship(string name, int size)
         {
             this.Name = name;
@@ -24,6 +25,5 @@ namespace _2023._10._13_Sänka_Skepp
             this.Size = size;
             this.ShipAlive = true;
         }
-
     }
 }

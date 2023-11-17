@@ -10,14 +10,12 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
     internal class Menu
     {
         GameManager gameManager = new GameManager();
-        FileHandler fileHandler = new FileHandler();
-        HighScoreList list = new HighScoreList();
+        HighScoreManager highScoreManager = new HighScoreManager();
 
 
         public void TheMenu()
         {
-            fileHandler.Filehandling();
-            fileHandler.GetScoresFromFile(list.listOfHighScore);
+            highScoreManager.Filehandling();
 
             bool menuStatus = true;
             while (menuStatus)
@@ -27,17 +25,20 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                               " - Spela nytt spel       [1]\n" +
                               " - Se HighScore          [2]\n" +
                               " - Avsluta               [3]\n");
+
                 string answer = Console.ReadLine();
+
                 switch (answer)
                 {
-                    case "1":
+                    case "1": //Play the game
                         gameManager.GameManagerMenu();
+                        gameManager.SetFileHandler(highScoreManager);
                         break;
-                    case "2":
+                    case "2": //View HighScores
                         Console.Clear();
-                        fileHandler.ViewScores(list.listOfHighScore);
+                        highScoreManager.ViewScores();
                         break;
-                    case "3":
+                    case "3": //Quit
                         Console.Clear();
                         Console.WriteLine("THANKS FOR CHECKING OUT THIS PROJECT! :)");
                         System.Environment.Exit(0);
@@ -45,7 +46,6 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                     default:
                         Console.WriteLine("Vänligen skriv en siffra mellan 1 - 3");
                         break;
-
                 }
             }
         }
