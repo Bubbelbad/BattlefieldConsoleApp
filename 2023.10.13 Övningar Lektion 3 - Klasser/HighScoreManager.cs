@@ -9,33 +9,29 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
 {
     internal class HighScoreManager
     {
-        string scorePath = @"C:\Users\SOS23\source\repos\2023.10.13 Övningar Lektion 3 - Klasser\2023.10.13 Övningar Lektion 3 - Klasser\bin\Debug\net6.0\scores";
-        string scoreFilePath = "scores.txt";
+        string scorePath = "scores.txt";
         public List<HighScore> listOfHighScore = new List<HighScore>();
+        public Queue<HighScore> queueOfHighScore = new Queue<HighScore>();
 
 
+        //thinking of adding to queue, after highscore is imported. 
         public void AddHighScore(string name, int points)
         {
-            listOfHighScore.Add(new HighScore(name, points));
-            using (StreamWriter sw = new StreamWriter(scoreFilePath))
-            {
-                sw.WriteLine(listOfHighScore[-1].GetCSV());
-            }
+            queueOfHighScore.Enqueue(new HighScore(name, points));
+          //  using (StreamWriter sw = new StreamWriter(scorePath))
+          //  {
+          //      sw.WriteLine(listOfHighScore[-1].GetCSV());
+          //  }
         }
 
 
         //Creates path, directory and so on. 
         public void Filehandling()
         {
-            bool directoryExists = Directory.Exists(scorePath);
-            if (!directoryExists)
-            {
-                Directory.CreateDirectory(scorePath);
-            }
-            bool fileExists = File.Exists(scoreFilePath);
+            bool fileExists = File.Exists(scorePath);
             if (!fileExists)
             {
-                File.Create(scoreFilePath);
+                File.Create(scorePath);
             }
         }
 
@@ -70,7 +66,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
 
         public void GetScoresFromFile(List<HighScore> highScores)
         {
-            using (StreamReader sr = new StreamReader(scoreFilePath))
+            using (StreamReader sr = new StreamReader(scorePath))
             {
                 string line = sr.ReadLine();
                 while (line != null)
@@ -87,10 +83,10 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         }
 
 
-        //This function gets the highScores from the list and writes them into scorePath (?)
+        //Here I think I should dequeue the 10 best highscores into scorePath (?)
         public void SaveScores(List<HighScore> highScores)
         {
-            StreamWriter sw = new StreamWriter(scoreFilePath);
+            StreamWriter sw = new StreamWriter(scorePath);
             for (int i = 0; i < highScores.Count; i++)
             {
                 sw.WriteLine(highScores[i].GetCSV());
