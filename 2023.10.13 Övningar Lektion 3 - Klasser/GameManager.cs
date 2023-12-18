@@ -20,7 +20,7 @@ namespace _2023._10._13_Sänka_Skepp
         string[,,] game = new string[12, 12, 2];
 
         string[] array = new string[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
-        List<string> highScore = new List<string> { "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", };
+        List<string> highScore = new List<string> { "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", }; //Vad är det här? 
 
 
         public GameManager()
