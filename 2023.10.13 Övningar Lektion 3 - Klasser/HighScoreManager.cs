@@ -11,13 +11,13 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
     {
         string scorePath = "scores.txt";
         public List<HighScore> listOfHighScore = new List<HighScore>();
-        public Queue<HighScore> queueOfHighScore = new Queue<HighScore>();
+        public PriorityQueue<HighScore, int> priorityQueue = new PriorityQueue<HighScore, int>();
 
 
         //thinking of adding to queue, after highscore is imported. 
         public void AddHighScore(string name, int points)
         {
-            queueOfHighScore.Enqueue(new HighScore(name, points));
+            priorityQueue.Enqueue(new HighScore(name, points), points);
           //  using (StreamWriter sw = new StreamWriter(scorePath))
           //  {
           //      sw.WriteLine(listOfHighScore[-1].GetCSV());
@@ -64,7 +64,7 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         }
 
 
-        public void GetScoresFromFile(List<HighScore> highScores)
+        public void GetScoresFromFile()
         {
             using (StreamReader sr = new StreamReader(scorePath))
             {
@@ -76,7 +76,8 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                     int score = int.Parse(variables[1]);
 
                     HighScore highScore = new HighScore(name, score);
-                    highScores.Add(highScore);
+                    listOfHighScore.Add(highScore);
+                    priorityQueue.Enqueue(highScore, score);
                     line = sr.ReadLine();
                 }
             }
@@ -87,10 +88,10 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
         public void SaveScores(List<HighScore> highScores)
         {
             StreamWriter sw = new StreamWriter(scorePath);
-            for (int i = 0; i < highScores.Count; i++)
+            for (int i = 0; i < 10; i++)
             {
                 sw.WriteLine(highScores[i].GetCSV());
-                if (i < highScores.Count - 1)
+                if (i == 10)
                 {
                     sw.WriteLine();
                 }
