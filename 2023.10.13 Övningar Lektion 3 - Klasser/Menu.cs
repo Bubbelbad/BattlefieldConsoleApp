@@ -43,7 +43,6 @@ namespace _2023._10._13_Övningar_Lektion_3___Klasser
                     case "3": //Quit
                         Console.Clear();
                         Console.WriteLine("THANKS FOR CHECKING OUT THIS PROJECT! :)");
-                        highScoreManager.SaveScores();
                         System.Environment.Exit(0);
                         break;
                     default:
