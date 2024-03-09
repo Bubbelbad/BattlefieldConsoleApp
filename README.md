@@ -7,6 +7,7 @@ The goal is to uncover all hidden boats in as few moves as possible.
 The player does not have it's own game field and won't get shot at by the CPU at this applications current state (but it might be developed later).
 
 The player chooses coordinates A-J & 1-10 to aim at a spot. The player gets direct feedback if he hit a ship or not. After all boats are completely hit /uncovered, the game is won and the number of moves is saved to a highscore as CSV.
+The best scores are sorted through a priority queue to display the results in order. 
 
 
 ## Features
@@ -20,7 +21,14 @@ The player chooses coordinates A-J & 1-10 to aim at a spot. The player gets dire
 
 ## Screenshots
 
+Game field overview:
+
 ![Game field](https://github.com/Bubbelbad/BattlefieldConsoleApp/blob/master/Screenshot%202023-10-30%20004901.png?raw=true)
+
+
+High score screenshot:
+
+![HighScore](https://github.com/Bubbelbad/Battleship-ConsoleApp/blob/master/Screenshot%202024-03-09%20140628.png)
 
 I took inspiration for the graphics from --> [Battleship Game In C# Console](https://www.c-sharpcorner.com/blogs/battleship-game-in-c-sharp-console-part-1) 
 
