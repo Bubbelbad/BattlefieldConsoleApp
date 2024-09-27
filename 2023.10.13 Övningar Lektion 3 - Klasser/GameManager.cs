@@ -42,7 +42,6 @@ namespace _2023._10._13_Sänka_Skepp
             bool menuStatus = true;
             while (menuStatus)
             {
-                ViewLayer0();
                 bool count = Aim(game);
                 Console.Clear();
                 if (count)
@@ -64,28 +63,89 @@ namespace _2023._10._13_Sänka_Skepp
         //To give input for aiming at a specific square and then calling Fire()
         public bool Aim(string[,,] game)
         {
-            bool aimStatus = false;
-            while (!aimStatus)
-            {
-                try
-                {
-                    Console.WriteLine("What column would you like to aim at?");
-                    int input1 = int.Parse(Console.ReadLine()!);
-                    Console.WriteLine("What row would you like aim at?");
-                    string input2 = Console.ReadLine()!.ToUpper();
-                    bool success = Fire(input1, input2, game);
-                    aimStatus = true;
-                    return true;
-                }
-                catch
-                {
-                    Console.WriteLine("Please put in two coordinates! From 1-10, then A-J\n");
-                    return false;
-                }
-            }
-            return false;
+			string currentError = string.Empty;
+
+			do
+			{
+				Console.Clear();
+				ViewLayer0();
+
+				Console.WriteLine(currentError);
+				Console.Write("Where would you like to strike? ");
+				
+				var answerTouple = ValidateInput(Console.ReadLine()?.Trim());
+
+				// If answer is invalid, do an early return by jumping one itteration forward
+				if(!answerTouple.isValid  || string.IsNullOrEmpty(answerTouple.row) || answerTouple.column == 0)
+				{
+					Console.WriteLine(answerTouple);
+					currentError = "Input error: Please enter column and number in any order separated with space. EG: \"a 10\" or \"10 a\"";
+					continue;
+				}
+
+				Fire(answerTouple.column, answerTouple.row.ToUpper(), game);
+				return true;
+			}
+			while(true);
         }
 
+		/// <summary>
+		/// Makes sure the input the user has given is valid<br />
+		/// If invalid input is given a touple will signify this.
+		/// </summary>
+		/// <param name="input">User input ( ReadLine() )</param>
+		/// <returns>Invalid input: (false, 0, null) || Valid input: (true, column, row)</returns>
+		(bool isValid, int column, string? row) ValidateInput(string? input)
+		{
+			// Default values
+			(bool, int, string?) errorTouple = (false, 0, null);
+
+			int column = 0;
+			string row = string.Empty;
+
+
+			// Contains input?
+			if(string.IsNullOrEmpty(input))
+				return errorTouple;
+
+			// Correct argument count?
+			string[] strikeArea = input.Split(" ");
+			if(strikeArea.Length != 2)
+				return errorTouple;
+
+			// Define row and column argument
+			bool columnIsDefined = false;
+			for(int i = 0; i < strikeArea.Length; i++)
+			{
+				string s = strikeArea[i].Trim().ToUpper();
+
+				if (int.TryParse(s, out int c))
+				{
+					// Duplicate / out of range
+					// Lowkey kinda hate how this is done, but it works.
+					if (columnIsDefined || c < 1 || c > 10)
+						return errorTouple;
+
+					column = c;
+					columnIsDefined =  true;
+				}
+				else
+				{
+					int p = Array.IndexOf(array, s);
+					if(p < 0)
+						return errorTouple;
+					
+					row = s;
+				}
+			}
+
+			// Did row and column get assigned correcly?
+			if (!columnIsDefined || column == 0 || string.IsNullOrEmpty(row))
+				return errorTouple;
+
+			// All checks passed! We will return a valid touple!
+			return (true, column, row);
+		}
 
         //To fire the given coordinates from Aim
         public bool Fire(int input1, string input2, string[,,] game)
