@@ -13,7 +13,7 @@ namespace _2023._10._13_Sänka_Skepp
     {
 
         GameField gameF = new GameField();
-        HighScoreManager highScoreManager = null;
+        HighScoreManager? highScoreManager = null;
         static int moveCount = 0;
 
         //The different game fields, two layers - one invisible and one visible.
@@ -70,9 +70,9 @@ namespace _2023._10._13_Sänka_Skepp
                 try
                 {
                     Console.WriteLine("What column would you like to aim at?");
-                    int input1 = int.Parse(Console.ReadLine());
+                    int input1 = int.Parse(Console.ReadLine()!);
                     Console.WriteLine("What row would you like aim at?");
-                    string input2 = Console.ReadLine().ToUpper();
+                    string input2 = Console.ReadLine()!.ToUpper();
                     bool success = Fire(input1, input2, game);
                     aimStatus = true;
                     return true;
@@ -177,9 +177,9 @@ namespace _2023._10._13_Sänka_Skepp
                 Console.Clear();
                 Console.WriteLine("Congratulations! You won the game.\n");
                 Console.WriteLine("Please enter your name: ");
-                string name = Console.ReadLine();
+                string name = Console.ReadLine()!;
 
-                highScoreManager.AddHighScore(name, moveCount);
+                highScoreManager!.AddHighScore(name, moveCount);
                 return true;
             }
             else
